@@ -8,7 +8,7 @@ Node
 * Alpha-Beta Pruning
 
 Othello
-* Move Generation
+* Seems done.
 
 Chess
 * Need good library
