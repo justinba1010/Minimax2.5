@@ -16,6 +16,7 @@ public class Node<Move extends BaseMove, Board extends BaseBoard> {
     board.init();
     System.out.println(board);
     value = board.evaluate();
+    turn = true;
     bestMove = null;
     bestNode = null;
     lastMove = null;
@@ -30,6 +31,7 @@ public class Node<Move extends BaseMove, Board extends BaseBoard> {
     lastMove = aMove;
     lastNode = aNode;
     children = new ArrayList<Node<Move, Board>>();
+    turn = !aMove.turn;//Opposite of the last move. Just for additional security.
   }//Node
 
   public void generate(int depth) {

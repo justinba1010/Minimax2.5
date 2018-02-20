@@ -5,7 +5,8 @@ public class OthelloAI {
     OthelloBoard aBoard = new OthelloBoard();
     Node<OthelloMove, OthelloBoard> minimax = new Node<OthelloMove, OthelloBoard>(aBoard);
     minimax.generate(1);
-    System.out.println(minimax.children);
+    for(Node child : minimax.children) {
+      System.out.println(child.lastMove);
+    }
   }
-
 }
