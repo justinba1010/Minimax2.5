@@ -6,10 +6,11 @@ public class BaseBoard {
   public int evaluate() {
     return 0;
   }
-
+  /* Compilation issues
   public ArrayList<Object> generateLegalMoves(boolean turn) {
     return null;
   }
+  */
 
   public Object deepCopy() {
     return null;
