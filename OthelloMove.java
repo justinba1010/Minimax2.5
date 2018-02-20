@@ -15,4 +15,8 @@ public class OthelloMove extends BaseMove {
     return x == move2.x && y == move2.y && turn == move2.turn;
   }
 
+  public String toString() {
+    return ((turn) ? "White" : "Black") + " :" + x +"|" + y;
+  }
+
 }
