@@ -34,7 +34,14 @@ public class OthelloBoard extends BaseBoard {
 
   public ArrayList<OthelloMove> generateLegalMoves(boolean turn) {
     ArrayList<OthelloMove> legalMoves = new ArrayList<OthelloMove>();
-    //TODO
+    for(int x = 0; x < size; x++) {
+      for(int y = 0; y < size; y++) {
+        OthelloMove move = new OthelloMove(turn, x,y);
+        if(isLegalMove(move)) {
+          legalMoves.add(move);
+        }
+      }
+    }
     return legalMoves;
   }
 
@@ -53,11 +60,12 @@ public class OthelloBoard extends BaseBoard {
   }
 
   public String toString() {
-    String s = "";
+    String s = "  0|1|2|3|4|5|6|7|\n";
     for(int x = 0; x < size; x++) {
+      s += x+"|";
       for(int y = 0; y < size; y++) {
         s += (gameboard[x][y] == 0) ? " " : (gameboard[x][y] == 1) ? "X" : "O";
-        s += (y == size -1) ? "" : "|";
+        s += "|";
       } //for y
       s += "\n";
     }// for x
@@ -65,7 +73,6 @@ public class OthelloBoard extends BaseBoard {
   }//toString
 
   //Insider Stuff
-
 
   private ArrayList<int[]> vectorBlocks(int x1, int y1, int[] vector) {
     ArrayList<int[]> blocks = new ArrayList<int[]>();
