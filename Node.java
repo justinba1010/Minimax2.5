@@ -39,11 +39,10 @@ public class Node<Move extends BaseMove, Board extends BaseBoard> {
       movesMade.add((Move)child.lastMove);
     }
     //Make new moves, and check to see if it was already made
-    for(Object o : board.generateLegalMoves(turn)) {
-      Move move = (Move)o;
+    for(BaseMove move : board.generateLegalMoves(turn)) {
       if(!movesMade.contains(move)){ //Make sure it's not in there
         Board newBoard = (Board)board.deepCopy();
-        Node newNode = new Node(newBoard, this, move);
+        Node<Move, Board> newNode = new Node<Move, Board>(newBoard, this, (Move)move);
         newNode.generate(depth-1);
         children.add(newNode);
       }//if Move is not made yet
