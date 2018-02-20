@@ -10,6 +10,9 @@ public class BaseBoard {
     return 0;
   }
 
+  public void makeMove(BaseMove move) {
+  }
+
   public ArrayList<? extends BaseMove> generateLegalMoves(boolean turn) {
     return null;
   }

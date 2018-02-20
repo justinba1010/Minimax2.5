@@ -39,15 +39,24 @@ public class OthelloBoard extends BaseBoard {
         OthelloMove move = new OthelloMove(turn, x,y);
         if(isLegalMove(move)) {
           legalMoves.add(move);
-        }
-      }
-    }
+        }// add move
+      }// for y
+    }// for x
     return legalMoves;
-  }
+  }//generateLegalMoves
+
+  public void makeMove(OthelloMove move) {
+    if(isLegalMove(move)) {
+      for(int[] block : takeBlocks(move)) {
+        gameboard[block[0]][block[1]] = turnToBoard(move.turn);
+      }//for block
+      gameboard[move.x][move.y] = turnToBoard(move.turn);
+    }//if legal
+  }//makeMove
 
   public boolean isLegalMove(OthelloMove move) {
     return !takeBlocks(move).isEmpty();
-  }
+  }//isLegalMove
 
   public OthelloBoard deepCopy() {
     OthelloBoard newBoard = new OthelloBoard();
@@ -57,7 +66,7 @@ public class OthelloBoard extends BaseBoard {
       }//for y
     }// for x
     return newBoard;
-  }
+  }//deepCopy
 
   public String toString() {
     String s = "  0|1|2|3|4|5|6|7|\n";
@@ -83,8 +92,8 @@ public class OthelloBoard extends BaseBoard {
       if(onBoard(x1,y1)) {
         int[] block = {x1,y1};
         blocks.add(block);
-      }
-    }
+      }//if
+    }//while
     return blocks;
   }//vectorBlocks
 
@@ -109,7 +118,7 @@ public class OthelloBoard extends BaseBoard {
     return gameboard[xy[0]][xy[1]];
   }//whoIs
 
-  public ArrayList<int[]> takeBlocks(OthelloMove move) {
+  private ArrayList<int[]> takeBlocks(OthelloMove move) {
     //So we need at least one vector to have the other player indefinitely until we hit the player who made the move.
     int startx = move.x;
     int starty = move.y;
@@ -119,10 +128,10 @@ public class OthelloBoard extends BaseBoard {
       boolean sandwich = false; //Check to make sure the pieces we are taking are sandwiched
       for(int[] block : vectorBlocks(startx, starty, vector)) {
         //Check if block is enemy, else we just break
-        if(whoIs(block) == ((move.turn) ? 1 : -1)) {//If it is the same player as the move maker, we just break.
+        if(whoIs(block) == turnToBoard(move.turn)) {//If it is the same player as the move maker, we just break.
           break;
         }
-        if(whoIs(block) == ((move.turn) ? -1 : 1)) {//If it is the opposite player we want to add this block.
+        if(whoIs(block) == -1*turnToBoard(move.turn)) {//If it is the opposite player we want to add this block.
           sandwich = true;
         } else if(whoIs(block) == 0) {//If it is not a taken spot, then we can cut our search because we never got a sandwich.
           sandwich = false;
@@ -137,6 +146,9 @@ public class OthelloBoard extends BaseBoard {
       }//if sandwich
     }//for vector
     return takeBlocks;
-  }
+  }//takeBlocks
 
-}
+  private int turnToBoard(boolean turn) {
+    return ((turn) ? 1 : -1);
+  }
+}//OthelloBoard

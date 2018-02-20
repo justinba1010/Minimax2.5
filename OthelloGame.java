@@ -8,5 +8,9 @@ public class OthelloGame {
     for(OthelloMove move : board.generateLegalMoves(false)) {
       System.out.println(move);
     }
+    OthelloMove a1 = board.generateLegalMoves(true).get(0);
+    board.makeMove(a1);
+    System.out.println(board);
+
   }//main
 }//OthelloGame
