@@ -2,17 +2,23 @@ import java.util.*;
 //Justin Baum
 
 public class BaseBoard {
+  public void init() {
+
+  }
 
   public int evaluate() {
     return 0;
   }
-  /* Compilation issues
-  public ArrayList<Object> generateLegalMoves(boolean turn) {
+
+  public ArrayList<? extends BaseMove> generateLegalMoves(boolean turn) {
     return null;
   }
-  */
 
   public Object deepCopy() {
     return null;
+  }
+
+  public String toString() {
+    return "";
   }
 }

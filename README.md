@@ -1,7 +1,15 @@
 # Minimax2.5
 The idea behind this is to work on a comprehensive Minimax search AI that doesn't need to be reconfigured for each game. Instead through polymorphism and the such, having a single Node object that can be reconfigured with other game objects, and put all together with an AI object.
 I would love pull requests and comments, so go ahead and make them.
-All code is
+
+# To Do
+Node
+* Minimax
+* Alpha-Beta Pruning
+Othello
+* Move Generation
+Chess
+* Need good library
 
 
 # MIT License

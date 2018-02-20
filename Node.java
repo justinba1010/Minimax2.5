@@ -13,6 +13,7 @@ public class Node<Move extends BaseMove, Board extends BaseBoard> {
 
   public Node() {
     board = (Board)(new BaseBoard());
+    board.init();
     value = board.evaluate();
     bestMove = null;
     bestNode = null;

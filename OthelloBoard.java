@@ -18,6 +18,7 @@ public class OthelloBoard extends BaseBoard {
         gameboard[x][y] = i;
         i *= -1;
       }//for y
+      i *= -1;
     }//Set board for start
   }//init
 
@@ -41,9 +42,21 @@ public class OthelloBoard extends BaseBoard {
     for(int x = 0; x < size; x++) {
       for(int y = 0; y < size; y++) {
         newBoard.gameboard[x][y] = gameboard[x][y];
-      }
-    }
+      }//for y
+    }// for x
     return newBoard;
   }
+
+  public String toString() {
+    String s = "";
+    for(int x = 0; x < size; x++) {
+      for(int y = 0; y < size; y++) {
+        s += (gameboard[x][y] == 0) ? " " : (gameboard[x][y] == 1) ? "X" : "O";
+        s += (y == size -1) ? "" : "|";
+      } //for y
+      s += "\n";
+    }// for x
+    return s;
+  }//toString
 
 }
