@@ -11,9 +11,10 @@ public class Node<Move extends BaseMove, Board extends BaseBoard> {
   public boolean turn;
   public ArrayList<Node<Move, Board>> children;
 
-  public Node() {
-    board = (Board)(new BaseBoard());
+  public Node(Board aBoard) {
+    board = aBoard;
     board.init();
+    System.out.println(board);
     value = board.evaluate();
     bestMove = null;
     bestNode = null;
@@ -60,7 +61,7 @@ public class Node<Move extends BaseMove, Board extends BaseBoard> {
       child.value = child.minimax(depth-1); //First traverse to bottom of the tree
       if((child.value > maximin && turn) || (child.value < maximin && !turn)) {
         maximin = child.value;
-        bestMove = child.lastMove;
+        bestMove = (Move)child.lastMove;
         bestNode = child;
       }
     }

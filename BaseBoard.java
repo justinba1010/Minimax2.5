@@ -24,4 +24,5 @@ public class BaseBoard {
   public String toString() {
     return "";
   }
+
 }
