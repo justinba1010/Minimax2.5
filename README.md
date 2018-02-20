@@ -6,8 +6,10 @@ I would love pull requests and comments, so go ahead and make them.
 Node
 * Minimax
 * Alpha-Beta Pruning
+
 Othello
 * Move Generation
+
 Chess
 * Need good library
 
